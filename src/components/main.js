@@ -10,6 +10,7 @@ class Main extends Component {
 
     componentDidMount() {
         {this.props.displayNotes();}
+        console.log(this.props.names);
     }
 
     constructor(){
@@ -51,15 +52,27 @@ class Main extends Component {
     notes = () => {
         if(this.props.notes && this.state.display == 1){
             return(
-            <View style={{marginTop: 50}}>
+            <View style={{marginTop: 70}}>
+                <View style = {{
+                    borderBottomWidth: 1,
+                    marginBottom: 20,
+                    marginLeft: 15,
+                    marginRight: 15,
+                    borderBottomColor: 'grey'}} >
+                    <Text 
+                    style = {{fontSize: 24, fontWeight: '700', marginLeft: 15, marginBottom: 8, color: 'orange' }} >
+                        Hey {this.props.names} !</Text>
+                </View>
                 { this.props.notes.map((item, key)=>(
-                     <Text key={key} style={styles.TextStyle} > { item } </Text>)
+                    <View>
+                        <Text key={key} style={styles.TextStyle} > { item } </Text>
+                    </View>)
                 )}
             </View>
         )}
         else {
             return(
-            <View style = {{marginTop: 50}}>
+            <View style = {{alignItems: 'center', justifyContent: 'center', marginTop: 400}}>
                 <ActivityIndicator size="large" color="rgb(19, 81, 176)" />
             </View>
         )}
@@ -152,14 +165,19 @@ styles = {
         borderWidth: 1, 
         width: 320,
         height: 120,
-        marginBottom: 40,
-        borderRadius: 7,
+        marginBottom: 30,
         paddingTop: 10,
         paddingBottom: 10,
         paddingLeft: 10,
         paddingRight: 10,
         alignSelf: 'center',
-        color: 'rgb(19, 81, 176)'
+        borderColor: 'orange',
+        backgroundColor: 'orange',
+        borderRadius: 7,
+        elevation: 5,
+        color: 'white',
+        fontWeight: '600',
+        overflow: 'hidden',
       }
 }
 

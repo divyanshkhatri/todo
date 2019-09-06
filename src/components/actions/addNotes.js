@@ -2,19 +2,19 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
 
-export const onAuth = ( {username, password} ) => {
+export const onAuth = ( {username, password, name} ) => {
     return((dispatch) => {
         firebase.auth().signInWithEmailAndPassword(username, password)
             .then((user) => {
                 dispatch({ type: 'loggedIn', payload: user })
-                console.log(user);
-                Actions.loggedIn();
+                console.log(user, name);
+                Actions.loggedIn({names: name});
             })
             .catch(()=> {
                 firebase.auth().createUserWithEmailAndPassword(username, password)
                 .then((user) => {
                     dispatch({ type: 'loggedIn', payload: user })
-                    Actions.loggedIn();
+                    Actions.loggedIn({name});
                     console.log(user)
                 })
                 .catch((err) => {

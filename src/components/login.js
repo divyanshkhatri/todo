@@ -9,15 +9,17 @@ class Login extends Component {
 
     state = {
         username: "khatri.divyansh98@gmail.com",
-        password: "Divyansh861951"
+        password: "Divyansh861951",
+        name: 'Divyansh'
     }
 
     onSubmit = () => {
         username = this.state.username;
         password = this.state.password;
+        name     = this.state.name;
         AsyncStorage.setItem('username', username);
         AsyncStorage.setItem('password', password);
-        this.props.onAuth({username, password});
+        this.props.onAuth({username, password, name});
 
     }
 
@@ -38,6 +40,24 @@ class Login extends Component {
                         tintColor = 'orange'
                         inputContainerStyle
                         onChangeText = {(username) => this.setState({username})}
+                        baseColor = 'orange'
+                        placeholderTextColor = 'orange'
+                        fontWeight = '600'
+                    />
+                </View>
+                <View style = {{marginLeft: 70, marginRight: 70}} >
+                    <TextField 
+                        style = {{ textAlign: 'center', alignItems: "center", justifyContent: "center"}}
+                        textColor = 'orange'
+                        labelPadding = {5}
+                        label = ""
+                        labelFontSize = {25}
+                        value= {this.state.name}
+                        placeholder = {'name'}
+                        tintColor = 'orange'
+                        inputContainerStyle
+                        autoCapitalize = "characters"
+                        onChangeText = {(name) => this.setState({name})}
                         baseColor = 'orange'
                         placeholderTextColor = 'orange'
                         fontWeight = '600'
