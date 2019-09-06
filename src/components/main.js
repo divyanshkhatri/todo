@@ -65,7 +65,7 @@ class Main extends Component {
                 </View>
                 { this.props.notes.map((item, key)=>(
                     <View>
-                        <Text key={key} style={styles.TextStyle} > { item } </Text>
+                        <Text key={key} style={styles.TextStyle} >{ item }</Text>
                     </View>)
                 )}
             </View>
