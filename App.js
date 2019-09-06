@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from './src/components/reducers';
+import Router from './src/router';
 
 class App extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
 
         var firebaseConfig = {
             apiKey: "AIzaSyDgu840xfvwgmZb1ZUogSX3Usp0aN5aHqE",
@@ -29,7 +30,7 @@ class App extends Component {
                 style = {{flex: 1}}
                 store = { createStore(reducers, {}, applyMiddleware(ReduxThunk)) }
                 >
-                <Main />
+                <Router />
             </Provider>
         ) 
     }
